@@ -1,0 +1,714 @@
+------------------------------------------------------------------------------------------------------
+MaxCounters **
+You are given N counters, initially set to 0, and you have two possible operations on them:
+increase(X) − counter X is increased by 1,
+max_counter − all counters are set to the maximum value of any counter.
+A non-empty zero-indexed array A of M integers is given. This array represents consecutive operations:
+if A[K] = X, such that 1 ≤ X ≤ N, then operation K is increase(X),
+if A[K] = N + 1 then operation K is max_counter.
+For example, given integer N = 5 and array A such that:
+    A[0] = 3
+    A[1] = 4
+    A[2] = 4
+    A[3] = 6
+    A[4] = 1
+    A[5] = 4
+    A[6] = 4
+the values of the counters after each consecutive operation will be:
+    (0, 0, 1, 0, 0)
+    (0, 0, 1, 1, 0)
+    (0, 0, 1, 2, 0)
+    (2, 2, 2, 2, 2)
+    (3, 2, 2, 2, 2)
+    (3, 2, 2, 3, 2)
+    (3, 2, 2, 4, 2)
+The goal is to calculate the value of every counter after all operations.
+Write a function:
+class Solution { public int[] solution(int N, int[] A); }
+that, given an integer N and a non-empty zero-indexed array A consisting of M integers, returns a sequence of integers representing the values of the counters.
+The sequence should be returned as:
+a structure Results (in C), or
+a vector of integers (in C++), or
+a record Results (in Pascal), or
+an array of integers (in any other programming language).
+For example, given:
+    A[0] = 3
+    A[1] = 4
+    A[2] = 4
+    A[3] = 6
+    A[4] = 1
+    A[5] = 4
+    A[6] = 4
+the function should return [3, 2, 2, 4, 2], as explained above.
+Assume that:
+N and M are integers within the range [1..100,000];
+each element of array A is an integer within the range [1..N + 1].
+Complexity:
+expected worst-case time complexity is O(N+M);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+Brackets *
+A string S consisting of N characters is considered to be properly nested if any of the following conditions is true:
+S is empty;
+S has the form "(U)" or "[U]" or "{U}" where U is a properly nested string;
+S has the form "VW" where V and W are properly nested strings.
+For example, the string "{[()()]}" is properly nested but "([)()]" is not.
+Write a function:
+class Solution { public int solution(String S); }
+that, given a string S consisting of N characters, returns 1 if S is properly nested and 0 otherwise.
+For example, given S = "{[()()]}", the function should return 1 and given S = "([)()]", the function should return 0, as explained above.
+Assume that:
+N is an integer within the range [0..200,000];
+string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N) (not counting the storage required for input arguments).
+------------------------------------------------------------------------------------------------------
+MaxProfit **
+A zero-indexed array A consisting of N integers is given. It contains daily prices of a stock share for a period of N consecutive days.
+If a single share was bought on day P and sold on day Q, where 0 ≤ P ≤ Q < N, then the profit of such transaction is equal to A[Q] − A[P], provided that A[Q] ≥ A[P].
+Otherwise, the transaction brings loss of A[P] − A[Q].
+For example, consider the following array A consisting of six elements such that:
+  A[0] = 23171
+  A[1] = 21011
+  A[2] = 21123
+  A[3] = 21366
+  A[4] = 21013
+  A[5] = 21367
+If a share was bought on day 0 and sold on day 2, a loss of 2048 would occur because A[2] − A[0] = 21123 − 23171 = −2048. If a share was bought on day 4 and sold on day 5, a profit of 354 would occur because A[5] − A[4] = 21367 − 21013 = 354. Maximum possible profit was 356. It would occur if a share was bought on day 1 and sold on day 5.
+Write a function,
+class Solution { public int solution(int[] A); }
+that, given a zero-indexed array A consisting of N integers containing daily prices of a stock share for a period of N consecutive days, returns the maximum possible profit from one transaction during this period.
+The function should return 0 if it was impossible to gain any profit.
+For example, given array A consisting of six elements such that:
+  A[0] = 23171
+  A[1] = 21011
+  A[2] = 21123
+  A[3] = 21366
+  A[4] = 21013
+  A[5] = 21367
+the function should return 356, as explained above.
+Assume that:
+N is an integer within the range [0..400,000];
+each element of array A is an integer within the range [0..200,000].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+GeonomicRangeQuery **
+A non-empty zero-indexed string S is given. String S consists of N characters from the set of upper-case English letters A, C, G, T.
+This string actually represents a DNA sequence, and the upper-case letters represent single nucleotides.
+You are also given non-empty zero-indexed arrays P and Q consisting of M integers. These arrays represent queries about minimal nucleotides.
+We represent the letters of string S as integers 1, 2, 3, 4 in arrays P and Q, where A = 1, C = 2, G = 3, T = 4, and we assume that A < C < G < T.
+Query K requires you to find the minimal nucleotide from the range (P[K], Q[K]), 0 ≤ P[i] ≤ Q[i] < N.
+For example, consider string S = GACACCATA and arrays P, Q such that:
+    P[0] = 0    Q[0] = 8
+    P[1] = 0    Q[1] = 2
+    P[2] = 4    Q[2] = 5
+    P[3] = 7    Q[3] = 7
+The minimal nucleotides from these ranges are as follows:
+(0, 8) is A identified by 1,
+(0, 2) is A identified by 1,
+(4, 5) is C identified by 2,
+(7, 7) is T identified by 4.
+Write a function:
+class Solution { public int[] solution(String S, int[] P, int[] Q); }
+that, given a non-empty zero-indexed string S consisting of N characters and two non-empty zero-indexed arrays P and Q consisting of M integers, returns an array consisting of M characters specifying the consecutive answers to all queries.
+The sequence should be returned as:
+a Results structure (in C), or
+a vector of integers (in C++), or
+a Results record (in Pascal), or
+an array of integers (in any other programming language).
+For example, given the string S = GACACCATA and arrays P, Q such that:
+    P[0] = 0    Q[0] = 8
+    P[1] = 0    Q[1] = 2
+    P[2] = 4    Q[2] = 5
+    P[3] = 7    Q[3] = 7
+the function should return the values [1, 1, 2, 4], as explained above.
+Assume that:
+N is an integer within the range [1..100,000];
+M is an integer within the range [1..50,000];
+each element of array P, Q is an integer within the range [0..N − 1];
+P[i] ≤ Q[i];
+string S consists only of upper-case English letters A, C, G, T.
+Complexity:
+expected worst-case time complexity is O(N+M);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+MinAvgTwoSlice **
+A non-empty zero-indexed array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N,
+is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q)
+is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice.
+To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
+For example, array A such that:
+    A[0] = 4
+    A[1] = 2
+    A[2] = 2
+    A[3] = 5
+    A[4] = 1
+    A[5] = 5
+    A[6] = 8
+contains the following example slices:
+slice (1, 2), whose average is (2 + 2) / 2 = 2;
+slice (3, 4), whose average is (5 + 1) / 2 = 3;
+slice (1, 4), whose average is (2 + 2 + 5 + 1) / 4 = 2.5.
+The goal is to find the starting position of a slice whose average is minimal.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given a non-empty zero-indexed array A consisting of N integers, returns the starting position of the slice
+with the minimal average. If there is more than one slice with a minimal average, you should return the smallest
+starting position of such a slice.
+For example, given array A such that:
+    A[0] = 4
+    A[1] = 2
+    A[2] = 2
+    A[3] = 5
+    A[4] = 1
+    A[5] = 5
+    A[6] = 8
+the function should return 1, as explained above.
+Assume that:
+N is an integer within the range [2..100,000];
+each element of array A is an integer within the range [−10,000..10,000].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+Triangle **
+A zero-indexed array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P < Q < R < N and:
+A[P] + A[Q] > A[R],
+A[Q] + A[R] > A[P],
+A[R] + A[P] > A[Q].
+For example, consider array A such that:
+  A[0] = 10    A[1] = 2    A[2] = 5
+  A[3] = 1     A[4] = 8    A[5] = 20
+Triplet (0, 2, 4) is triangular.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given a zero-indexed array A consisting of N integers, returns 1 if there exists a triangular triplet for this array and returns 0 otherwise. For example, given array A such that:
+  A[0] = 10    A[1] = 2    A[2] = 5
+  A[3] = 1     A[4] = 8    A[5] = 20
+the function should return 1, as explained above. Given array A such that:
+  A[0] = 10    A[1] = 50    A[2] = 5
+  A[3] = 1
+the function should return 0.
+Assume that:
+N is an integer within the range [0..1,000,000];
+each element of array A is an integer within the range [−2,147,483,648..2,147,483,647].
+Complexity:
+expected worst-case time complexity is O(N*log(N));
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+CountPalindromSlices ***
+In this problem we consider only strings consisting of lower-case English letters (a−z).
+A string is a palindrome if it reads exactly the same from left to right as it does from right to left. For example, these strings are palindromes:
+aza
+abba
+abacaba
+These strings are not palindromes:
+zaza
+abcd
+abacada
+Given a string S of length N, a slice of S is a substring of S specified by a pair of integers (p, q), such that 0 ≤ p < q < N.
+A slice (p, q) of string S is palindromic if the string consisting of letters S[p], S[p+1], ..., S[q] is a palindrome.
+For example, in a string S = abbacada:
+slice (0, 3) is palindromic because abba is a palindrome,
+slice (6, 7) is not palindromic because da is not a palindrome,
+slice (2, 5) is not palindromic because baca is not a palindrome,
+slice (1, 2) is palindromic because bb is a palindrome.
+Write a function
+class Solution { public int solution(String S); }
+that, given a string S of length N letters, returns the number of palindromic slices of S. The function should return −1 if this number is greater than 100,000,000.
+For example, for string S = baababa the function should return 6, because exactly six of its slices are palindromic; namely: (0, 3), (1, 2), (2, 4), (2, 6), (3, 5), (4, 6).
+Assume that:
+N is an integer within the range [0..20,000];
+string S consists only of lower-case letters (a−z).
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N) (not counting the storage required for input arguments).
+------------------------------------------------------------------------------------------------------
+Nesting *
+A string S consisting of N characters is called properly nested if:
+S is empty;
+S has the form "(U)" where U is a properly nested string;
+S has the form "VW" where V and W are properly nested strings.
+For example, string "(()(())())" is properly nested but string "())" isn't.
+Write a function:
+class Solution { public int solution(String S); }
+that, given a string S consisting of N characters, returns 1 if string S is properly nested and 0 otherwise.
+For example, given S = "(()(())())", the function should return 1 and given S = "())", the function should return 0, as explained above.
+Assume that:
+N is an integer within the range [0..1,000,000];
+string S consists only of the characters "(" and/or ")".
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(1) (not counting the storage required for input arguments).
+------------------------------------------------------------------------------------------------------
+minBlocksWall (sigma2012) **
+Solution to this task can be found at our blog.
+You are going to build a stone wall. The wall should be straight and N meters long, and its thickness should be constant; however, it should have different heights in different places.
+The height of the wall is specified by a zero-indexed array H of N positive integers. H[I] is the height of the wall from I to I+1 meters to the right of its left end.
+In particular, H[0] is the height of the wall's left end and H[N−1] is the height of the wall's right end.
+The wall should be built of cuboid stone blocks (that is, all sides of such blocks are rectangular). Your task is to compute the minimum number of blocks needed to build the wall.
+Write a function:
+class Solution { public int solution(int[] H); }
+that, given a zero-indexed array H of N positive integers specifying the height of the wall, returns the minimum number of blocks needed to build it.
+For example, given array H containing N = 9 integers:
+  H[0] = 8    H[1] = 8    H[2] = 5
+  H[3] = 7    H[4] = 9    H[5] = 8
+  H[6] = 7    H[7] = 4    H[8] = 8
+the function should return 7. The figure shows one possible arrangement of seven blocks.
+
+Assume that:
+N is an integer within the range [1..100,000];
+each element of array H is an integer within the range [1..1,000,000,000].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+Fish **
+You are given two non-empty zero-indexed arrays A and B consisting of N integers. Arrays A and B represent N voracious fish in a river, ordered downstream along the flow of the river.
+The fish are numbered from 0 to N − 1, fish number P is represented by A[P] and B[P], and if P < Q then fish P is initially upstream of fish Q. Initially, each fish has a unique position.
+Array A contains the sizes of the fish. All its elements are unique. Array B contains the directions of the fish. It contains only 0s and/or 1s, where:
+0 represents a fish flowing upstream,
+1 represents a fish flowing downstream.
+If two fish move in opposite directions and there are no other (living) fish between them, they will eventually meet each other. Then only one fish can stay alive − the larger fish eats the smaller one.
+More precisely, we say that two fish P and Q meet each other when P < Q, B[P] = 1 and B[Q] = 0, and there are no living fish between them. After they meet:
+If A[P] > A[Q] then P eats Q, and P will still be flowing downstream,
+If A[Q] > A[P] then Q eats P, and Q will still be flowing upstream.
+We assume that all the fish are flowing at the same speed. That is, fish moving in the same direction never meet. The goal is to calculate the number of fish that will stay alive.
+For example, consider arrays A and B such that:
+  A[0] = 4    B[0] = 0
+  A[1] = 3    B[1] = 1
+  A[2] = 2    B[2] = 0
+  A[3] = 1    B[3] = 0
+  A[4] = 5    B[4] = 0
+Initially all the fish are alive and all except fish number 1 are moving upstream. Fish number 1 meets fish number 2 and eats it, then it meets fish number 3 and eats it too.
+Finally, it meets fish number 4 and is eaten by it. The remaining two fish, numbers 0 and 4, never meet and therefore stay alive.
+Write a function:
+class Solution { public int solution(int[] A, int[] B); }
+that, given two non-empty zero-indexed arrays A and B consisting of N integers, returns the number of fish that will stay alive.
+For example, given the arrays shown above, the function should return 2, as explained above.
+Assume that:
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [0..1,000,000,000];
+each element of array B is an integer that can have one of the following values: 0, 1;
+the elements of A are all distinct.
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+EquiLeader *
+A non-empty zero-indexed array A consisting of N integers is given.
+The leader of this array is the value that occurs in more than half of the elements of A.
+An equi_leader is an index S such that 0 ≤ S < N − 1 and two sequences A[0], A[1], ..., A[S] and A[S + 1], A[S + 2], ..., A[N − 1] have leaders of the same value.
+For example, given array A such that:
+    A[0] = 4
+    A[1] = 3
+    A[2] = 4
+    A[3] = 4
+    A[4] = 4
+    A[5] = 2
+we can find two equi_leaders:
+0, because sequences: (4) and (3, 4, 4, 4, 2) have the same leader, whose value is 4.
+2, because sequences: (4, 3, 4) and (4, 4, 2) have the same leader, whose value is 4.
+The goal is to count the number of equi_leaders. Write a function:
+class Solution { public int solution(int[] A); }
+that, given a non-empty zero-indexed array A consisting of N integers, returns the number of equi_leaders.
+For example, given:
+    A[0] = 4
+    A[1] = 3
+    A[2] = 4
+    A[3] = 4
+    A[4] = 4
+    A[5] = 2
+the function should return 2, as explained above.
+Assume that:
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [−1,000,000,000..1,000,000,000].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+MaxDoubleSliceSum **
+A non-empty zero-indexed array A consisting of N integers is given.
+A triplet (X, Y, Z), such that 0 ≤ X < Y < Z < N, is called a double slice.
+The sum of double slice (X, Y, Z) is the total of A[X + 1] + A[X + 2] + ... + A[Y − 1] + A[Y + 1] + A[Y + 2] + ... + A[Z − 1].
+For example, array A such that:
+    A[0] = 3
+    A[1] = 2
+    A[2] = 6
+    A[3] = -1
+    A[4] = 4
+    A[5] = 5
+    A[6] = -1
+    A[7] = 2
+contains the following example double slices:
+double slice (0, 3, 6), sum is 2 + 6 + 4 + 5 = 17,
+double slice (0, 3, 7), sum is 2 + 6 + 4 + 5 − 1 = 16,
+double slice (3, 4, 5), sum is 0.
+The goal is to find the maximal sum of any double slice.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given a non-empty zero-indexed array A consisting of N integers, returns the maximal sum of any double slice.
+For example, given:
+    A[0] = 3
+    A[1] = 2
+    A[2] = 6
+    A[3] = -1
+    A[4] = 4
+    A[5] = 5
+    A[6] = -1
+    A[7] = 2
+the function should return 17, because no double slice of array A has a sum of greater than 17.
+Assume that:
+N is an integer within the range [3..100,000];
+each element of array A is an integer within the range [−10,000..10,000].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+MaxSliceSum **
+A non-empty zero-indexed array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P ≤ Q < N, is called a slice of array A. The sum of a slice (P, Q) is the total of A[P] + A[P+1] + ... + A[Q].
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given an array A consisting of N integers, returns the maximum sum of any slice of A.
+For example, given array A such that:
+A[0] = 3  A[1] = 2  A[2] = -6
+A[3] = 4  A[4] = 0
+the function should return 5 because:
+(3, 4) is a slice of A that has sum 4,
+(2, 2) is a slice of A that has sum −6,
+(0, 1) is a slice of A that has sum 5,
+no other slice of A has sum greater than (0, 1).
+Assume that:
+N is an integer within the range [1..1,000,000];
+each element of array A is an integer within the range [−1,000,000..1,000,000];
+the result will be an integer within the range [−2,147,483,648..2,147,483,647].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+MinPerimeterRectangle *
+An integer N is given, representing the area of some rectangle.
+The area of a rectangle whose sides are of length A and B is A * B, and the perimeter is 2 * (A + B).
+The goal is to find the minimal perimeter of any rectangle whose area equals N. The sides of this rectangle should be only integers.
+For example, given integer N = 30, rectangles of area 30 are:
+(1, 30), with a perimeter of 62,
+(2, 15), with a perimeter of 34,
+(3, 10), with a perimeter of 26,
+(5, 6), with a perimeter of 22.
+Write a function:
+class Solution { public int solution(int N); }
+that, given an integer N, returns the minimal perimeter of any rectangle whose area is exactly equal to N.
+For example, given an integer N = 30, the function should return 22, as explained above.
+Assume that:
+N is an integer within the range [1..1,000,000,000].
+Complexity:
+expected worst-case time complexity is O(sqrt(N));
+expected worst-case space complexity is O(1).
+------------------------------------------------------------------------------------------------------
+Peaks **
+A non-empty zero-indexed array A consisting of N integers is given.
+A peak is an array element which is larger than its neighbors. More precisely, it is an index P such that 0 < P < N − 1,  A[P − 1] < A[P] and A[P] > A[P + 1].
+For example, the following array A:
+    A[0] = 1
+    A[1] = 2
+    A[2] = 3
+    A[3] = 4
+    A[4] = 3
+    A[5] = 4
+    A[6] = 1
+    A[7] = 2
+    A[8] = 3
+    A[9] = 4
+    A[10] = 6
+    A[11] = 2
+has exactly three peaks: 3, 5, 10.
+We want to divide this array into blocks containing the same number of elements. More precisely, we want to choose a number K that will yield the following blocks:
+A[0], A[1], ..., A[K − 1],
+A[K], A[K + 1], ..., A[2K − 1],
+...
+A[N − K], A[N − K + 1], ..., A[N − 1].
+What's more, every block should contain at least one peak.
+Notice that extreme elements of the blocks (for example
+A[K − 1] or A[K]) can also be peaks, but only if they have both neighbors (including one in an adjacent blocks).
+The goal is to find the maximum number of blocks into which the array A can be divided.
+Array A can be divided into blocks as follows:
+one block (1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2). This block contains three peaks.
+two blocks (1, 2, 3, 4, 3, 4) and (1, 2, 3, 4, 6, 2). Every block has a peak.
+three blocks (1, 2, 3, 4), (3, 4, 1, 2), (3, 4, 6, 2). Every block has a peak. Notice in particular that the first block (1, 2, 3, 4) has a peak at A[3], because A[2] < A[3] > A[4], even though A[4] is in the adjacent block.
+However, array A cannot be divided into four blocks, (1, 2, 3), (4, 3, 4), (1, 2, 3) and (4, 6, 2), because the (1, 2, 3) blocks do not contain a peak.
+Notice in particular that the (4, 3, 4) block contains two peaks: A[3] and A[5].
+The maximum number of blocks that array A can be divided into is three.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given a non-empty zero-indexed array A consisting of N integers, returns the maximum number of blocks into which A can be divided.
+If A cannot be divided into some number of blocks, the function should return 0.
+For example, given:
+    A[0] = 1
+    A[1] = 2
+    A[2] = 3
+    A[3] = 4
+    A[4] = 3
+    A[5] = 4
+    A[6] = 1
+    A[7] = 2
+    A[8] = 3
+    A[9] = 4
+    A[10] = 6
+    A[11] = 2
+the function should return 3, as explained above.
+Assume that:
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [0..1,000,000,000].
+Complexity:
+expected worst-case time complexity is O(N*log(log(N)));
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+boron2013 ***
+A non-empty zero-indexed array A consisting of N integers is given. A peak is an array element which is larger than its neighbours. More precisely, it is an index P such that 0 < P < N − 1 and A[P − 1] < A[P] > A[P + 1].
+For example, the following array A:
+    A[0] = 1
+    A[1] = 5
+    A[2] = 3
+    A[3] = 4
+    A[4] = 3
+    A[5] = 4
+    A[6] = 1
+    A[7] = 2
+    A[8] = 3
+    A[9] = 4
+    A[10] = 6
+    A[11] = 2
+has exactly four peaks: elements 1, 3, 5 and 10.
+You are going on a trip to a range of mountains whose relative heights are represented by array A. You have to choose how many flags you should take with you. The goal is to set the maximum number of flags on the peaks, according to certain rules.
+Flags can only be set on peaks. What's more, if you take K flags, then the distance between any two flags should be greater than or equal to K. The distance between indices P and Q is the absolute value |P − Q|.
+For example, given the mountain range represented by array A, above, with N = 12, if you take:
+two flags, you can set them on peaks 1 and 5;
+three flags, you can set them on peaks 1, 5 and 10;
+four flags, you can set only three flags, on peaks 1, 5 and 10.
+You can therefore set a maximum of three flags in this case.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given a non-empty zero-indexed array A of N integers, returns the maximum number of flags that can be set on the peaks of the array.
+For example, given N = 12 and the following array A:
+    A[0] = 1
+    A[1] = 5
+    A[2] = 3
+    A[3] = 4
+    A[4] = 3
+    A[5] = 4
+    A[6] = 1
+    A[7] = 2
+    A[8] = 3
+    A[9] = 4
+    A[10] = 6
+    A[11] = 2
+the function should return 3, as explained above.
+Assume that:
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [0..1,000,000,000].
+Complexity:
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+CountNonDivisible **
+You are given a non-empty zero-indexed array A consisting of N integers.
+For each number A[i] such that 0 ≤ i < N, we want to count the number of elements of the array that are not the divisors of A[i]. We say that these elements are non-divisors.
+For example, consider integer N = 5 and array A such that:
+    A[0] = 3
+    A[1] = 1
+    A[2] = 2
+    A[3] = 3
+    A[4] = 6
+For the following elements:
+A[0] = 3, the non-divisors are: 2, 6,
+A[1] = 1, the non-divisors are: 3, 2, 3, 6,
+A[2] = 2, the non-divisors are: 3, 3, 6,
+A[3] = 3, the non-divisors are: 2, 6,
+A[6] = 6, there aren't any non-divisors.
+Write a function:
+class Solution { public int[] solution(int[] A); }
+that, given a non-empty zero-indexed array A consisting of N integers, returns a sequence of integers representing the numbers of non-divisors.
+The sequence should be returned as:
+a structure Results (in C), or
+a vector of integers (in C++), or
+a record Results (in Pascal), or
+an array of integers (in any other programming language).
+For example, given:
+    A[0] = 3
+    A[1] = 1
+    A[2] = 2
+    A[3] = 3
+    A[4] = 6
+the function should return [2, 4, 3, 2, 0], as explained above.
+Assume that:
+N is an integer within the range [1..50,000];
+each element of array A is an integer within the range [1..2 * N].
+Complexity:
+expected worst-case time complexity is O(N*log(N));
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+ChocolatesByNumber *
+Two positive integers N and M are given. Integer N represents the number of chocolates arranged in a circle, numbered from 0 to N − 1.
+You start to eat the chocolates. After eating a chocolate you leave only a wrapper.
+You begin with eating chocolate number 0. Then you omit the next M − 1 chocolates or wrappers on the circle, and eat the following one.
+More precisely, if you ate chocolate number X, then you will next eat the chocolate with number (X + M) modulo N (remainder of division).
+You stop eating when you encounter an empty wrapper.
+For example, given integers N = 10 and M = 4. You will eat the following chocolates: 0, 4, 8, 2, 6.
+The goal is to count the number of chocolates that you will eat, following the above rules.
+Write a function:
+int solution(int N, int M);
+that, given two positive integers N and M, returns the number of chocolates that you will eat.
+For example, given integers N = 10 and M = 4. the function should return 5, as explained above.
+Assume that:
+N and M are integers within the range [1..1,000,000,000].
+Complexity:
+expected worst-case time complexity is O(log(N+M));
+expected worst-case space complexity is O(1).
+------------------------------------------------------------------------------------------------------
+countSemiprimes **
+The prime is a positive integer X that has exactly two distinct divisors: 1 and X. The first few prime integers are 2, 3, 5, 7, 11 and 13.
+The semiprime is a natural number that is the product of two (not necessarily distinct) prime numbers. The first few semiprimes are 4, 6, 9, 10, 14, 15, 21, 22, 25, 26.
+You are given two non-empty zero-indexed arrays P and Q, each consisting of M integers. These arrays represent queries about the number of semiprimes within specified ranges.
+Query K requires you to find the number of semiprimes within the range (P[K], Q[K]), where 1 ≤ P[K] ≤ Q[K] ≤ N.
+For example, consider an integer N = 26 and arrays P, Q such that:
+    P[0] = 1    Q[0] = 26
+    P[1] = 4    Q[1] = 10
+    P[2] = 16   Q[2] = 20
+The number of semiprimes within each of these ranges is as follows:
+(1, 26) is 10,
+(4, 10) is 4,
+(16, 20) is 0.
+Write a function:
+class Solution { public int[] solution(int N, int[] P, int[] Q); }
+that, given an integer N and two non-empty zero-indexed arrays P and Q consisting of M integers, returns an array consisting of M elements specifying the consecutive answers to all the queries.
+For example, given an integer N = 26 and arrays P, Q such that:
+    P[0] = 1    Q[0] = 26
+    P[1] = 4    Q[1] = 10
+    P[2] = 16   Q[2] = 20
+the function should return the values [10, 4, 0], as explained above.
+Assume that:
+N is an integer within the range [1..50,000];
+M is an integer within the range [1..30,000];
+each element of array P is an integer within the range [1..N];
+each element of array Q is an integer within the range [1..N];
+P[i] ≤ Q[i].
+Complexity:
+expected worst-case time complexity is O(N*log(log(N))+M);
+expected worst-case space complexity is O(N+M), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+CommonPrimeDivisors **
+A prime is a positive integer X that has exactly two distinct divisors: 1 and X. The first few prime integers are 2, 3, 5, 7, 11 and 13.
+A prime D is called a prime divisor of a positive integer P if there exists a positive integer K such that D * K = P. For example, 2 and 5 are prime divisors of 20.
+You are given two positive integers N and M. The goal is to check whether the sets of prime divisors of integers N and M are exactly the same.
+For example, given:
+N = 15 and M = 75, the prime divisors are the same: {3, 5};
+N = 10 and M = 30, the prime divisors aren't the same: {2, 5} is not equal to {2, 3, 5};
+N = 9 and M = 5, the prime divisors aren't the same: {3} is not equal to {5}.
+Write a function:
+class Solution { public int solution(int[] A, int[] B); }
+that, given two non-empty zero-indexed arrays A and B of Z integers, returns the number of positions K for which the prime divisors of A[K] and B[K] are exactly the same.
+For example, given:
+    A[0] = 15   B[0] = 75
+    A[1] = 10   B[1] = 30
+    A[2] = 3    B[2] = 5
+the function should return 1, because only one pair (15, 75) has the same set of prime divisors.
+Assume that:
+Z is an integer within the range [1..6,000];
+each element of arrays A, B is an integer within the range [1..2147483647].
+Complexity:
+expected worst-case time complexity is O(Z*log(max(A)+max(B))2);
+expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+BinaryGap *
+A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
+For example, number 9 has binary representation 1001 and contains a binary gap of length 2. The number 529 has binary representation 1000010001) and contains two binary gaps: one of length 4 and one of length 3.
+The number 20 has binary representation 10100 and contains one binary gap of length 1. The number 15 has binary representation 1111 and has no binary gaps.
+Write a function:
+class Solution { public int solution(int N); }
+that, given a positive integer N, returns the length of its longest binary gap. The function should return 0 if N doesn't contain a binary gap.
+For example, given N = 1041 the function should return 5, because N has binary representation 10000010001 and so its longest binary gap is of length 5.
+Assume that:
+N is an integer within the range [1..2,147,483,647].
+Complexity:
+expected worst-case time complexity is O(log(N));
+expected worst-case space complexity is O(1).
+------------------------------------------------------------------------------------------------------
+PermMissingElements
+A zero-indexed array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
+
+Your goal is to find that missing element.
+
+Write a function:
+
+class Solution { public int solution(int[] A); }
+
+that, given a zero-indexed array A, returns the value of the missing element.
+
+For example, given array A such that:
+
+  A[0] = 2
+  A[1] = 3
+  A[2] = 1
+  A[3] = 5
+the function should return 4, as it is the missing element.
+
+Assume that:
+
+N is an integer within the range [0..100,000];
+the elements of A are all distinct;
+each element of array A is an integer within the range [1..(N + 1)].
+Complexity:
+
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
+------------------------------------------------------------------------------------------------------
+MaxSliceSum
+
+A non-empty zero-indexed array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P ≤ Q < N, is called a slice of array A.
+The sum of a slice (P, Q) is the total of A[P] + A[P+1] + ... + A[Q].
+
+Write a function:
+
+int solution(int A[], int N);
+
+that, given an array A consisting of N integers, returns the maximum sum of any slice of A.
+
+For example, given array A such that:
+
+A[0] = 3  A[1] = 2  A[2] = -6
+A[3] = 4  A[4] = 0
+the function should return 5 because:
+
+(3, 4) is a slice of A that has sum 4,
+(2, 2) is a slice of A that has sum −6,
+(0, 1) is a slice of A that has sum 5,
+no other slice of A has sum greater than (0, 1).
+Assume that:
+
+N is an integer within the range [1..1,000,000];
+each element of array A is an integer within the range [−1,000,000..1,000,000];
+the result will be an integer within the range [−2,147,483,648..2,147,483,647].
+Complexity:
+
+expected worst-case time complexity is O(N);
+expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+Elements of input arrays can be modified.
